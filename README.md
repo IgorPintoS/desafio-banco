@@ -1,7 +1,7 @@
-#Projeto Banco - Simulação Bancária
+#Projeto Banco - Simulação Bancária#
 Este projeto é uma simulação bancária desenvolvida em Java para fins de treinamento e aprendizado de conceitos de Programação Orientada a Objetos (POO).
 
-##Funcionalidades Implementadas
+##Funcionalidades Implementadas##
 ✅ Sistema de contas bancárias (corrente e poupança)
 
 ✅ Gerenciamento de clientes
@@ -18,34 +18,56 @@ Transferência entre contas
 
 ✅ Numeração automática de contas
 
-##Diagrama de Classes Simplificado
-┌───────────────────┐       ┌───────────┐
-│       IConta      │       │  Cliente  │
-├───────────────────┤       ├───────────┤
-│+ depositar()      │       │- nome     │
-│+ sacar()          │       └───────────┘
-│+ transferir()     │            ▲
-│+ imprimirExtrato()│            │
-└───────┬───────────┘            │
-        ▲                        │
-        │                        │
-┌───────┴───────┐                │
-│    Conta      │────────────────┘
-├───────────────┤
-│- agencia      │
-│- conta        │
-│- saldo        │
-│- cliente      │
-└───────┬───────┘
-        ▲
-        │
-   ┌────┴─────┐
-   │          │
-┌──┴───┐  ┌───┴───┐
-│Conta │  │Conta  │
-│Corrente│ │Poupança│
-└───────┘ └───────┘
-##Tecnologias Utilizadas
+##Diagrama de Classes Simplificado##
+classDiagram
+    direction BT
+
+    class IConta {
+        <<interface>>
+        +transferir(double valor, Conta contaDestino)
+        +sacar(double valor)
+        +depositar(double valor)
+        +imprimirExtrato()
+    }
+
+    class Conta {
+        <<abstract>>
+        -static AGENCIA_PADRAO: int
+        -static SEQUENCIAL: int
+        #conta: int
+        #agencia: int
+        #saldo: double
+        #cliente: Cliente
+        +Conta(Cliente cliente)
+        #imprimirInfosComuns()
+        +transferir(double valor, Conta contaDestino)
+        +sacar(double valor)
+        +depositar(double valor)
+        +getConta() int
+        +getAgencia() int
+        +getSaldo() double
+    }
+
+    class Cliente {
+        -nome: String
+        +setNome(String nome)
+        +getNome() String
+    }
+
+    class ContaCorrente {
+        +imprimirExtrato()
+    }
+
+    class ContaPoupanca {
+        +imprimirExtrato()
+    }
+
+    Conta ..|> IConta
+    Conta --> Cliente : possui
+    ContaCorrente --|> Conta
+    ContaPoupanca --|> Conta
+    
+##Tecnologias Utilizadas##
 Java 11+
 
 ##Paradigma de Orientação a Objetos
@@ -60,7 +82,7 @@ Herança
 
 Polimorfismo
 
-##Como Executar o Projeto
+##Como Executar o Projeto##
 Clone o repositório:
 
 bash
@@ -106,20 +128,8 @@ Cliente: João Silva
 Agencia: 1
 Conta: 2
 Saldo: 400.00
-Estrutura de Arquivos
-📂 projeto-banco
-├── 📂 src
-│   ├── 📂 Model
-│   │   ├── Conta.java
-│   │   └── IConta.java
-│   └── 📂 Service
-│       ├── Cliente.java
-│       ├── ContaCorrente.java
-│       └── ContaPoupanca.java
-├── 📄 README.md
-└── 📄 .gitignore
 
-##Contribuição
+##Contribuição##
 Este projeto é para fins educacionais, mas contribuições e sugestões são bem-vindas! Sinta-se à vontade para:
 
 Reportar issues
