@@ -1,7 +1,8 @@
-#Projeto Banco - Simulação Bancária#
+#Projeto Banco - Simulação Bancária
 Este projeto é uma simulação bancária desenvolvida em Java para fins de treinamento e aprendizado de conceitos de Programação Orientada a Objetos (POO).
 
-##Funcionalidades Implementadas##
+##Funcionalidades Implementadas
+
 ✅ Sistema de contas bancárias (corrente e poupança)
 
 ✅ Gerenciamento de clientes
@@ -18,7 +19,8 @@ Transferência entre contas
 
 ✅ Numeração automática de contas
 
-##Diagrama de Classes Simplificado##
+##Diagrama de Classes Simplificado
+
 classDiagram
     direction BT
 
@@ -67,7 +69,8 @@ classDiagram
     ContaCorrente --|> Conta
     ContaPoupanca --|> Conta
     
-##Tecnologias Utilizadas##
+##Tecnologias Utilizadas
+
 Java 11+
 
 ##Paradigma de Orientação a Objetos
@@ -116,6 +119,7 @@ public class Main {
         poupanca.imprimirExtrato();
     }
 }
+
 Saída do Exemplo
 === Extrato Conta Corrente ===
 Cliente: João Silva
@@ -129,7 +133,7 @@ Agencia: 1
 Conta: 2
 Saldo: 400.00
 
-##Contribuição##
+##Contribuição
 Este projeto é para fins educacionais, mas contribuições e sugestões são bem-vindas! Sinta-se à vontade para:
 
 Reportar issues
